@@ -12,11 +12,3 @@ public struct Player
     }
 }
 
-public class Player2
-{
-    public string name;
-    public string remWord;
-    public int remNumber;
-    public Player2 next;
-
-}
