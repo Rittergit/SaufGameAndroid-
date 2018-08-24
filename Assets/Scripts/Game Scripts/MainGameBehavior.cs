@@ -11,10 +11,20 @@ public class MainGameBehavior : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        for(int i =0; i < PlayerList.playList.Length; i++)
+        if (PlayerList.playList != null)
         {
-            Debug.Log(PlayerList.playList[i].name);
+            for(int i =0; i < PlayerList.playList.Length; i++)
+            {
+                Debug.Log(PlayerList.playList[i].name);
+            }
         }
+        else
+        {
+            PlayerList.playList = new Player[2];
+            PlayerList.playList[0].name = "schwul";
+            PlayerList.playList[1].name = "schwul";
+        }
+        
     }
 	
 	// Update is called once per frame
@@ -25,9 +35,10 @@ public class MainGameBehavior : MonoBehaviour {
             GameHandler.RollTurned = false;
             float x = Random.value;
             int schlucke = 2;
-
-            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);
-
+            
+                actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);
+     
+            
             int auf = GameHandler.task;
 
 

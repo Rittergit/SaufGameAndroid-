@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RollTurning : MonoBehaviour {
 
-    public float slow=0.5f,slow2=0.2f;
+    public float slow=0.5f,slow2=0.2f,speed;
     public double startAngel;
-    private int sides=10;
+    private int sides=32;
     private double[] angels;
     public string ausgabe;
     public GameObject rb;
@@ -14,7 +14,7 @@ public class RollTurning : MonoBehaviour {
     private Vector2 pos1,pos2;
     private float start, end;
     private bool isDragged = false;
-    public int speed, count = 0;
+    public int count = 0;
     private bool isRotating;
     private double endAngel=0;
 
@@ -22,9 +22,11 @@ public class RollTurning : MonoBehaviour {
     void Start() {
         rb.GetComponent<Rigidbody>();
         angels = new double[sides];
+
         for(int i=0; i<sides; i++)
         {
-            angels[i] = startAngel + 360 / sides * i;
+            angels[i] = startAngel + (double)360 / (double)sides * (double)i;
+            Debug.Log(angels[i]);
         }
 
 	}
