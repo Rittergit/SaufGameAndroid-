@@ -975,6 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerList: []
   maxSchlucke: 0
+  text: {fileID: 1177971595}
 --- !u!4 &1621377517
 Transform:
   m_ObjectHideFlags: 0

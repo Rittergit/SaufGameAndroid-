@@ -62,7 +62,7 @@ public class RollTurning : MonoBehaviour {
                         {
                             if ((Mathf.Abs((float)(actualRotation - angels[i])) < difference)&& actualRotation - angels[i]>=0)
                             {
-                                if (!((GameHandler.sideList[i]==3) && GameHandler.allRem)&&!((GameHandler.sideList[i] == 3) && GameHandler.noRem))
+                                if (!((GameHandler.sideList[i]==4) && GameHandler.allRem)&&!((GameHandler.sideList[i] == 5) && GameHandler.noRem))
                                 {
                                     difference = actualRotation - angels[i];
                                     endAngel = angels[i];

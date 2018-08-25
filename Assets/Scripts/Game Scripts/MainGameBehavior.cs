@@ -36,9 +36,9 @@ public class MainGameBehavior : MonoBehaviour {
             Debug.Log("roll turned läuft");
             GameHandler.RollTurned = false;
             float x = Random.value;
-            int schlucke = 2;
+            int schlucke = (int)(Random.value*3)+1;
             
-            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);     
+            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length-1));     
             
             int task = GameHandler.sideList[GameHandler.task]-1;
 
@@ -63,7 +63,7 @@ public class MainGameBehavior : MonoBehaviour {
                         if (PlayerList.playList[actualPlayer].remWord == null)
                         {
                             remWord = GameHandler.words[Mathf.RoundToInt(Random.value* GameHandler.words.Length)];
-                            //GameHandler.textSet = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
+                            text.text = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
                             PlayerList.playList[actualPlayer].remWord = remWord;
                             GameHandler.noRem = false;
                             gotPlayer = true;
@@ -100,8 +100,8 @@ public class MainGameBehavior : MonoBehaviour {
                     {
                         if (PlayerList.playList[actualPlayer].remWord != null)
                         {
-                            
-                            GameHandler.textSet = PlayerList.playList[actualPlayer].name + " sagt sein Wort oder trinkt 4 Schlücke";
+
+                            text.text = PlayerList.playList[actualPlayer].name + " sagt sein Wort oder trinkt 4 Schlücke";
                             PlayerList.playList[actualPlayer].remWord = null;
                             got1Player = true;
                         }
@@ -130,8 +130,15 @@ public class MainGameBehavior : MonoBehaviour {
                         GameHandler.noRem = true;
                     }
                     break;
+
+                case 5:
+                    text.text = "Kings-Cup: " + PlayerList.playList[actualPlayer].name + " ballert was in die Mitte";
+                    break;
+                case 6:
+                    text.text = "Kings-Cup: " + PlayerList.playList[actualPlayer].name + " darf die Scheiße saufen";
+                    break;
                 default:
-                    GameHandler.textSet = "Alle Saufen";
+                    text.text = "Alle Saufen";
                     break;
             }
 
