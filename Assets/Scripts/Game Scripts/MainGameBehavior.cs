@@ -35,10 +35,9 @@ public class MainGameBehavior : MonoBehaviour {
         {
             Debug.Log("roll turned läuft");
             GameHandler.RollTurned = false;
-            float x = Random.value;
             int schlucke = (int)(Random.value*3)+1;
             
-            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length-1));     
+            actualPlayer = (int)(Random.value*(PlayerList.playList.Length));     
             
             int task = GameHandler.sideList[GameHandler.task]-1;
 
@@ -62,8 +61,8 @@ public class MainGameBehavior : MonoBehaviour {
                     {
                         if (PlayerList.playList[actualPlayer].remWord == null)
                         {
-                            remWord = GameHandler.words[Mathf.RoundToInt(Random.value* GameHandler.words.Length)];
-                            text.text = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
+                            remWord = GameHandler.words[(int)(Random.value* (GameHandler.words.Length-1))];
+                            text.text = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: '" + remWord+"'";
                             PlayerList.playList[actualPlayer].remWord = remWord;
                             GameHandler.noRem = false;
                             gotPlayer = true;
@@ -101,7 +100,7 @@ public class MainGameBehavior : MonoBehaviour {
                         if (PlayerList.playList[actualPlayer].remWord != null)
                         {
 
-                            text.text = PlayerList.playList[actualPlayer].name + " sagt sein Wort oder trinkt 4 Schlücke";
+                            text.text = PlayerList.playList[actualPlayer].name + " sag dein Wort oder trink 4 Schlücke";
                             PlayerList.playList[actualPlayer].remWord = null;
                             got1Player = true;
                         }
@@ -136,6 +135,11 @@ public class MainGameBehavior : MonoBehaviour {
                     break;
                 case 6:
                     text.text = "Kings-Cup: " + PlayerList.playList[actualPlayer].name + " darf die Scheiße saufen";
+                    break;
+                case 7:
+                    int r = (int)(Random.value * (PlayerList.playList.Length - 1)); 
+                    text.text = PlayerList.playList[actualPlayer].name+ " denk dir für " +PlayerList.playList[r].name + " ein Wahrheit- oder Pflichtaufgabe aus";
+
                     break;
                 default:
                     text.text = "Alle Saufen";
