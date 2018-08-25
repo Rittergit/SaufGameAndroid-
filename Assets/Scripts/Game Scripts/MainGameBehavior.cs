@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainGameBehavior : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class MainGameBehavior : MonoBehaviour {
     private int actualPlayer = 0;
     public int maxSchlucke;
     private string remWord;
+    public Text text;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +26,7 @@ public class MainGameBehavior : MonoBehaviour {
             PlayerList.playList[0].name = "schwul";
             PlayerList.playList[1].name = "schwul";
         }
-        
+        text.text = "";
     }
 	
 	// Update is called once per frame
@@ -43,13 +45,16 @@ public class MainGameBehavior : MonoBehaviour {
             switch (task)
             {
                 case 0:
-                    GameHandler.textSet = PlayerList.playList[actualPlayer].name + " trinkt " + schlucke + " Schlücke";
+                    text.text = PlayerList.playList[actualPlayer].name + " trinkt " + schlucke + " Schlücke";
+                    // GameHandler.textSet = PlayerList.playList[actualPlayer].name + " trinkt " + schlucke + " Schlücke";
                     break;                    
                 case 1:
-                    GameHandler.textSet = PlayerList.playList[actualPlayer].name + " verteilt " + schlucke + " Schlücke";
+                    text.text = PlayerList.playList[actualPlayer].name + " verteilt " + schlucke + " Schlücke";
+                    // GameHandler.textSet = PlayerList.playList[actualPlayer].name + " verteilt " + schlucke + " Schlücke";
                     break;
                 case 2:
-                    GameHandler.textSet = "Yay, alle dürfen " + schlucke + " Schlücke trinken";
+                    text.text = "Yay, alle dürfen " + schlucke + " Schlücke trinken";
+                    //GameHandler.textSet = "Yay, alle dürfen " + schlucke + " Schlücke trinken";
                     break;
                 case 3:
                     bool gotPlayer = false;
@@ -58,7 +63,7 @@ public class MainGameBehavior : MonoBehaviour {
                         if (PlayerList.playList[actualPlayer].remWord == null)
                         {
                             remWord = GameHandler.words[Mathf.RoundToInt(Random.value* GameHandler.words.Length)];
-                            GameHandler.textSet = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
+                            //GameHandler.textSet = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
                             PlayerList.playList[actualPlayer].remWord = remWord;
                             GameHandler.noRem = false;
                             gotPlayer = true;
