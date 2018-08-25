@@ -10,6 +10,7 @@ public static class GameHandler
     public static string textSet = "";
     public static int task = 0;
     public static string[] words = { "Hurensohn", "Missgeburt", "rekursiver Algorithmus", "schwul" };
+    public static int[] sideList = { 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2 };
 
 
     public static bool noRem=true;

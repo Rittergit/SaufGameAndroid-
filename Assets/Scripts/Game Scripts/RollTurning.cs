@@ -62,7 +62,7 @@ public class RollTurning : MonoBehaviour {
                         {
                             if ((Mathf.Abs((float)(actualRotation - angels[i])) < difference)&& actualRotation - angels[i]>=0)
                             {
-                                if (!((i == 7||i==7||i==7) && GameHandler.allRem)&&!((i == 8||i==8||i==8) && GameHandler.noRem))
+                                if (!((GameHandler.sideList[i]==3) && GameHandler.allRem)&&!((GameHandler.sideList[i] == 3) && GameHandler.noRem))
                                 {
                                     difference = actualRotation - angels[i];
                                     endAngel = angels[i];
@@ -73,7 +73,7 @@ public class RollTurning : MonoBehaviour {
                             }
                         }
                         rotSpeed = -(float)difference / 50;
-                    }                                 
+                    }
                     if(count == 50)
                     {
                         actualRotation = (float)endAngel;

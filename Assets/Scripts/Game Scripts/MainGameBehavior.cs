@@ -36,31 +36,22 @@ public class MainGameBehavior : MonoBehaviour {
             float x = Random.value;
             int schlucke = 2;
             
-                actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);
-     
+            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);     
             
-            int auf = GameHandler.task;
+            int task = GameHandler.sideList[GameHandler.task]-1;
 
-
-
-
-
-            switch (auf)
+            switch (task)
             {
                 case 0:
-                case 1:
-                case 2:
                     GameHandler.textSet = PlayerList.playList[actualPlayer].name + " trinkt " + schlucke + " Schlücke";
-                    break;
-                case 3:
-                case 4:
-                case 5:
+                    break;                    
+                case 1:
                     GameHandler.textSet = PlayerList.playList[actualPlayer].name + " verteilt " + schlucke + " Schlücke";
                     break;
-                case 6:
+                case 2:
                     GameHandler.textSet = "Yay, alle dürfen " + schlucke + " Schlücke trinken";
                     break;
-                case 7:
+                case 3:
                     bool gotPlayer = false;
                     while (!gotPlayer)
                     {
@@ -97,10 +88,8 @@ public class MainGameBehavior : MonoBehaviour {
                     {
                         GameHandler.allRem = true;
                     }
-
-
                     break;
-                case 8:
+                case 4:
                     bool got1Player = false;
                     while (!got1Player)
                     {
