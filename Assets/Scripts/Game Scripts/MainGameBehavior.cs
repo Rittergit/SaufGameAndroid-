@@ -21,8 +21,8 @@ public class MainGameBehavior : MonoBehaviour {
         else
         {
             PlayerList.playList = new Player[2];
-            PlayerList.playList[0].name = "schwul1";
-            PlayerList.playList[1].name = "schwul2";
+            PlayerList.playList[0].name = "schwul";
+            PlayerList.playList[1].name = "schwul";
         }
         
     }
@@ -36,7 +36,7 @@ public class MainGameBehavior : MonoBehaviour {
             float x = Random.value;
             int schlucke = 2;
             
-            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length-1));     
+            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);     
             
             int task = GameHandler.sideList[GameHandler.task]-1;
 
