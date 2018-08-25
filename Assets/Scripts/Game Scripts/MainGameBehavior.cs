@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainGameBehavior : MonoBehaviour {
+public class MainGameBehavior : MonoBehaviour
+{
 
     public string[] playerList;
     private int actualPlayer = 0;
@@ -10,10 +11,11 @@ public class MainGameBehavior : MonoBehaviour {
     private string remWord;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         if (PlayerList.playList != null)
         {
-            for(int i =0; i < PlayerList.playList.Length; i++)
+            for (int i = 0; i < PlayerList.playList.Length; i++)
             {
                 Debug.Log(PlayerList.playList[i].name);
             }
@@ -21,30 +23,31 @@ public class MainGameBehavior : MonoBehaviour {
         else
         {
             PlayerList.playList = new Player[2];
-            PlayerList.playList[0].name = "schwul";
-            PlayerList.playList[1].name = "schwul";
+            PlayerList.playList[0].name = "schwul1";
+            PlayerList.playList[1].name = "schwul2";
         }
-        
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (GameHandler.RollTurned == true)
         {
             Debug.Log("roll turned läuft");
             GameHandler.RollTurned = false;
             float x = Random.value;
             int schlucke = 2;
-            
-            actualPlayer = Mathf.RoundToInt(x*(PlayerList.playList.Length)-1);     
-            
-            int task = GameHandler.sideList[GameHandler.task]-1;
+
+            actualPlayer = Mathf.RoundToInt(x * (PlayerList.playList.Length - 1));
+
+            int task = GameHandler.sideList[GameHandler.task] - 1;
 
             switch (task)
             {
                 case 0:
                     GameHandler.textSet = PlayerList.playList[actualPlayer].name + " trinkt " + schlucke + " Schlücke";
-                    break;                    
+                    break;
                 case 1:
                     GameHandler.textSet = PlayerList.playList[actualPlayer].name + " verteilt " + schlucke + " Schlücke";
                     break;
@@ -57,7 +60,7 @@ public class MainGameBehavior : MonoBehaviour {
                     {
                         if (PlayerList.playList[actualPlayer].remWord == null)
                         {
-                            remWord = GameHandler.words[Mathf.RoundToInt(Random.value* GameHandler.words.Length)];
+                            remWord = GameHandler.words[Mathf.RoundToInt(Random.value * GameHandler.words.Length)];
                             GameHandler.textSet = PlayerList.playList[actualPlayer].name + " merkt sich das Wort: " + remWord;
                             PlayerList.playList[actualPlayer].remWord = remWord;
                             GameHandler.noRem = false;
@@ -72,11 +75,11 @@ public class MainGameBehavior : MonoBehaviour {
                             else
                             {
                                 actualPlayer = 0;
-                            }                            
+                            }
                         }
                     }
                     bool isLeft = false;
-                    for(int i = 0; i<PlayerList.playList.Length; i++)
+                    for (int i = 0; i < PlayerList.playList.Length; i++)
                     {
                         if (PlayerList.playList[i].remWord == null)
                         {
@@ -95,14 +98,14 @@ public class MainGameBehavior : MonoBehaviour {
                     {
                         if (PlayerList.playList[actualPlayer].remWord != null)
                         {
-                            
+
                             GameHandler.textSet = PlayerList.playList[actualPlayer].name + " sagt sein Wort oder trinkt 4 Schlücke";
                             PlayerList.playList[actualPlayer].remWord = null;
                             got1Player = true;
                         }
                         else
                         {
-                            if (actualPlayer < PlayerList.playList.Length-1)
+                            if (actualPlayer < PlayerList.playList.Length - 1)
                             {
                                 actualPlayer++;
                             }
