@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RollTurning : MonoBehaviour {
 
@@ -17,13 +18,33 @@ public class RollTurning : MonoBehaviour {
     public int count = 0;
     private bool isRotating;
     private double endAngel=0;
+    public Sprite[] spr;
+    private GameObject[] spriteObjects;
+    private Image[] images;
+    public Texture2D[] textures;
 
     // Use this for initialization
     void Start() {
         rb.GetComponent<Rigidbody>();
         angels = new double[sides];
+        spriteObjects = new GameObject[sides];
+        spr = new Sprite[sides];
+        images = new Image[sides];
 
-        for(int i=0; i<sides; i++)
+
+
+
+
+        spr[0] = Sprite.Create(textures[0], new Rect(0.0f, 0.0f, textures[0].width, textures[0].height), new Vector2(0.5f, 0.5f));
+
+        images[0] = spriteObjects[0].AddComponent<Image>();
+        images[0].sprite = spr[0];
+        spriteObjects[0].GetComponent<RectTransform>().SetParent(rb.transform);
+
+
+
+
+        for (int i=0; i<sides; i++)
         {
             angels[i] = startAngel + (double)360 / (double)sides * (double)i;
             Debug.Log(angels[i]);
@@ -62,7 +83,7 @@ public class RollTurning : MonoBehaviour {
                         {
                             if ((Mathf.Abs((float)(actualRotation - angels[i])) < difference)&& actualRotation - angels[i]>=0)
                             {
-                                if (!((GameHandler.sideList[i]==3) && GameHandler.allRem)&&!((GameHandler.sideList[i] == 3) && GameHandler.noRem))
+                                if (!((GameHandler.sideList[i]==4) && GameHandler.allRem)&&!((GameHandler.sideList[i] == 5) && GameHandler.noRem))
                                 {
                                     difference = actualRotation - angels[i];
                                     endAngel = angels[i];
